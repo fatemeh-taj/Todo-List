@@ -1,15 +1,15 @@
 :root {
-    --primary: #EA40A4;
-    --business: #3A82EE;
-    --personal: var(--primary);
+    --add: #EA40A4;
+    --edit: deeppink;
+    --active: fuchsia;
     --light: #EEE;
     --white: #FFF;
     --grey: #888;
     --dark: #313154;
     --danger: #ff5b57;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --personal-glow: 0px 0px 4px rgb(234, 64, 164, 0.75);
-    --business-glow: 0px 0px 4px rgb(58, 130, 238, 0.75);
+    --add-glow: 0px 0px 4px rgb(234, 64, 164, 0.75);
+    --active-glow: 0px 0px 4px rgb(255, 0, 255, 0.75);
 }
 
 * {
@@ -19,7 +19,7 @@
     font-family: 'montserrat', sans-serif;
 }
 
-input:not([type="radio"]):not([type="checkbox"]),
+input:not([type="checkbox"]),
 button {
     appearance: none;
     border: none;
@@ -89,26 +89,6 @@ h4 {
     margin-bottom: 1.5rem;
 }
 
-.creat-todo .options {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.creat-todo .options label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    cursor: pointer;
-}
-
-input[type="radio"],
 input[type="checkbox"] {
     display: none;
 }
@@ -120,13 +100,8 @@ input[type="checkbox"] {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid var(--business);
-    box-shadow: var(--business-glow);
-}
-
-.bubble.personal {
-    border: 2px solid var(--personal);
-    box-shadow: var(--personal-glow);
+    border: 2px solid var(--active);
+    box-shadow: var(--active-glow);
 }
 
 .bubble::after {
@@ -135,27 +110,16 @@ input[type="checkbox"] {
     width: 0px;
     height: 0px;
     opacity: 0;
-    background-color: var(--business);
-    box-shadow: var(--business-glow);
+    background-color: var(--active);
+    box-shadow: var(--active-glow);
     border-radius: 50%;
     transition: .2s ease-in-out;
-}
-
-.bubble.personal::after {
-    background-color: var(--personal);
-    box-shadow: var(--personal-glow);
 }
 
 input:checked~.bubble::after {
     width: 10px;
     height: 10px;
     opacity: 1;
-}
-
-.creat-todo .options label div {
-    color: var(--dark);
-    font-size: 1.125rem;
-    margin-top: 1rem;
 }
 
 .creat-todo input[type="submit"] {
@@ -165,9 +129,9 @@ input:checked~.bubble::after {
     border-radius: 0.5rem;
     cursor: pointer;
     transition: .2s ease-in-out;
-    background-color: var(--primary);
+    background-color: var(--add);
     color: var(--white);
-    box-shadow: var(--personal-glow);
+    box-shadow: var(--add-glow);
     padding: 1rem 1.5rem;
 }
 
@@ -224,7 +188,7 @@ input:checked~.bubble::after {
 
 .todo-item .actions .edit {
     margin-right: 0.5rem;
-    background-color: var(--primary);
+    background-color: var(--edit);
 }
 
 .todo-item .actions .delete {

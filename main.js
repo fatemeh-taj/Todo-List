@@ -1,4 +1,5 @@
 window.addEventListener("load", () => {
+    // show date
     n = new Date();
     y = n.getFullYear();
     m = n.getMonth() + 1;
@@ -7,6 +8,7 @@ window.addEventListener("load", () => {
 
     todos = JSON.parse(localStorage.getItem('todos')) || [];
 
+    // handle name
     const nameInput = document.querySelector('#name');
     const newTodoForm = document.querySelector('#new-todo-form');
 
@@ -18,13 +20,14 @@ window.addEventListener("load", () => {
 
     newTodoForm.addEventListener('submit', e => {
         e.preventDefault();
-        if (!e.target.elements.content.value) return;
+        if (!e.target.elements.content.value) {
+            alert("enter a todo❤️");
+            return;
+        }
 
         const todo = {
             content: e.target.elements.content.value,
-            category: e.target.elements.category.value,
-            done: false,
-            creatAt: new Date().getTime()
+            done: false
         }
 
         todos.push(todo);
@@ -48,8 +51,6 @@ function DisplayTodos() {
 
         const span = document.createElement("span");
         span.classList.add('bubble');
-        if (todo.category == 'personal') span.classList.add('personal');
-        else span.classList.add('business');
 
         const content = document.createElement("div");
         content.classList.add('todo-content');

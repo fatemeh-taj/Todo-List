@@ -1,7 +1,8 @@
 :root {
     --add: #EA40A4;
+    --select: aqua;
     --edit: deeppink;
-    --active: fuchsia;
+    --item: fuchsia;
     --light: #EEE;
     --white: #FFF;
     --grey: #888;
@@ -9,7 +10,8 @@
     --danger: #ff5b57;
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     --add-glow: 0px 0px 4px rgb(234, 64, 164, 0.75);
-    --active-glow: 0px 0px 4px rgb(255, 0, 255, 0.75);
+    --select-glow: 0px 0px 4px rgb(0, 255, 255, 0.75);
+    --item-glow: 0px 0px 4px rgb(255, 0, 255, 0.75);
 }
 
 * {
@@ -100,8 +102,8 @@ input[type="checkbox"] {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    border: 2px solid var(--active);
-    box-shadow: var(--active-glow);
+    border: 2px solid var(--item);
+    box-shadow: var(--item-glow);
 }
 
 .bubble::after {
@@ -110,8 +112,8 @@ input[type="checkbox"] {
     width: 0px;
     height: 0px;
     opacity: 0;
-    background-color: var(--active);
-    box-shadow: var(--active-glow);
+    background-color: var(--item);
+    box-shadow: var(--item-glow);
     border-radius: 50%;
     transition: .2s ease-in-out;
 }
@@ -136,6 +138,29 @@ input:checked~.bubble::after {
 }
 
 .creat-todo input[type="submit"]:hover {
+    opacity: 0.75;
+}
+
+.status {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid aqua;
+}
+
+.status button {
+    margin: 0 1rem;
+    cursor: pointer;
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 1rem;
+    transition: .2s ease-in-out;
+
+    /* border-radius: 0.25rem;
+    background-color: var(--select);
+    padding: 0.5rem;
+    box-shadow: var(--select-glow); */
+}
+
+.status button:hover {
     opacity: 0.75;
 }
 
@@ -166,6 +191,7 @@ input:checked~.bubble::after {
 .todo-item .todo-content input {
     color: var(--dark);
     font-size: 1.125rem;
+    width: 100%;
 }
 
 .todo-item .actions {
